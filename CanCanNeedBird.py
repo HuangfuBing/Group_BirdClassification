@@ -1,21 +1,14 @@
 import tensorflow as tf
-import tensorflow.python.keras as op
-from tensorflow.python.keras.callbacks import EarlyStopping
-#可视化
+from tensorflow.keras import backend, optimizers
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import GaussianNoise, Dense
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard, LearningRateScheduler
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import matplotlib.pyplot as plt
-import vit_keras.vit
-#创建图片张量
-from keras.preprocessing.image import ImageDataGenerator
-from tensorflow.python.keras.callbacks import LearningRateScheduler
-from tensorflow.python.keras.layers import GaussianNoise,Dense
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.callbacks import EarlyStopping
-#创建会话时进行参数配置
-from tensorflow._api.v2.compat.v1 import ConfigProto
-#事先设定好session，默认自己就是用户要操作的session
-from tensorflow._api.v2.compat.v1 import InteractiveSession
+from vit_keras import vit
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
 from tensorflow.python.client import device_lib
-from tensorflow.python.keras import backend,optimizers
 TRAIN_PATH = "../Dataset/train"
 VALID_PATH = "../Dataset/valid"
 TEST_PATH = "../Dataset/test"
