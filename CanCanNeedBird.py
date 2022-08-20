@@ -94,7 +94,6 @@ def plotImages(images_arr):
 augmented_images=[train_generator[0][0][0] for i in range(5)]
 plotImages(augmented_images)
 backend.clear_session()
-
 #配置模型
 #ViT模型思考角度和卷积神经网络略有差异
 #https://zhuanlan.zhihu.com/p/491848581
@@ -139,13 +138,12 @@ model.add(head)
 model.compile(optimizer=op.optimizers.adam_v2.Adam(),
               loss="sparse_categorical_crossentropy",
               metrics=["accuracy"])
-model.summary()
 
 #开始训练
 #history attribute is a record of training loss values and metrics values at successive epochs, as well as validation loss values and validation metrics values
 history = model.fit(
     train_generator,
-    epochs=100,#default
+    epochs=20,#default
     validation_data=validation_generator,
     verbose=1,#default
     shuffle=True,
@@ -177,3 +175,6 @@ plt.xlabel("Epochs")
 plt.ylabel("Accuracy")
 plt.legend()
 plt.show()
+
+#保存模型
+model.save('BirdClassification.h5')
