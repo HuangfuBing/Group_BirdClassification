@@ -1,6 +1,6 @@
 # 导入相应模块
 import tensorflow as tf
-from tensorflow.keras import backend, optimizers+
+from tensorflow.keras import backend, optimizers
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import GaussianNoise, Dense
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, TensorBoard, LearningRateScheduler
@@ -57,7 +57,7 @@ train_generator = train_datagen.flow_from_directory(
     batch_size=8,
     color_mode='rgb',
     class_mode='sparse',#展开成一维
-    shuffle=True,
+    shuffle=False,
 )
 
 validation_generator = valid_datagen.flow_from_directory(
@@ -177,3 +177,4 @@ print("best val_loss:", np.min(val_loss_values), "epoch:", np.argmin(val_loss_va
 test_loss, test_acc = model.evaluate(test_generator)
 print("Test Accuracy:", test_acc)
 model.save('ViT.h5')
+model.save('./model')
