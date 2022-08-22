@@ -3,6 +3,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import cv2 as cv
 
+#参看文章：https://blog.csdn.net/qq_36926037/article/details/106112072
 def image_process(image_path):
     tf.compat.v1.disable_eager_execution()
     image=cv.imread(image_path)
@@ -28,3 +29,6 @@ interpreter.set_tensor(input_details[0]['index'], image)#传入的数据必须�
 interpreter.invoke()
 output_data = interpreter.get_tensor(output_details[0]['index'])
 print(output_data)
+w = np.argmax(output_data)#值最大的位置
+print(w)#第279类
+
