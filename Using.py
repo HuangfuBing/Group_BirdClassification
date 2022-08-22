@@ -31,5 +31,6 @@ interpreter.invoke()
 output_data = interpreter.get_tensor(output_details[0]['index'])
 print(output_data)
 w = np.argmax(output_data)#值最大的位置
+#https://bbs.huaweicloud.com/blogs/336990 这篇文章给出了预测的一种方法
 print(w)#第279类
 
