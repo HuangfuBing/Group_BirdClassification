@@ -4,6 +4,7 @@ import numpy as np
 import cv2 as cv
 
 #参看文章：https://blog.csdn.net/qq_36926037/article/details/106112072
+#来自tensorflow的官方文档：https://tensorflow.google.cn/lite/guide/inference?hl=zh-cn#%E5%9C%A8_python_%E4%B8%AD%E5%8A%A0%E8%BD%BD%E5%B9%B6%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%9E%8B
 def image_process(image_path):
     tf.compat.v1.disable_eager_execution()
     image=cv.imread(image_path)
