@@ -1,10 +1,24 @@
+import keras.models
 import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
 import cv2 as cv
+import csv as csv
+
+#读csv文件
+def Load_csv(csv_file_name="test.csv"):
+    """
+    从CSV文件中读取数据信息
+    :param csv_file_name: CSV文件名
+    :return: Data：二维数组
+    """
+    csv_reader = csv.reader(open(csv_file_name))
+    Data=[]
+    for row in csv_reader:
+        Data.append(row)
+    print("Read All!")
+    return Data
 
 #参看文章：https://blog.csdn.net/qq_36926037/article/details/106112072
-#来自tensorflow的官方文档：https://tensorflow.google.cn/lite/guide/inference?hl=zh-cn#%E5%9C%A8_python_%E4%B8%AD%E5%8A%A0%E8%BD%BD%E5%B9%B6%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%9E%8B
 def image_process(image_path):
     tf.compat.v1.disable_eager_execution()
     image=cv.imread(image_path)
@@ -17,7 +31,8 @@ def image_process(image_path):
     image = image.eval(session=sess)  # 转化为numpy数组
     return image
 
-image_path="F:/test/2.jpg"
+data=Load_csv("D:/WorkSpace/PycharmProjects/CanCanNeedBird/Dataset/birds latin names.csv")
+image_path="F:/test/001.jpg"
 image=image_process(image_path)
 print(image)
 interpreter = tf.lite.Interpreter("./model.tflite")
@@ -31,6 +46,6 @@ interpreter.invoke()
 output_data = interpreter.get_tensor(output_details[0]['index'])
 print(output_data)
 w = np.argmax(output_data)#值最大的位置
-#https://bbs.huaweicloud.com/blogs/336990 这篇文章给出了预测的一种方法
-print(w)#第279类
+print("鸟类俗名：",data[w][1]," ","鸟类学名:",data[w][2])#第100
+
 
