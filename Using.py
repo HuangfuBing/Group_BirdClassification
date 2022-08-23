@@ -35,7 +35,7 @@ data=Load_csv("D:/WorkSpace/PycharmProjects/CanCanNeedBird/Dataset/birds latin n
 image_path="./148.jpg"
 image=image_process(image_path)
 print(image)
-interpreter = tf.lite.Interpreter("./vit_l32.tflite")
+interpreter = tf.lite.Interpreter("./vit_l16.tflite")
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()

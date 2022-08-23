@@ -54,7 +54,7 @@ test_datagen = ImageDataGenerator(rescale=1 / 255)
 train_generator = train_datagen.flow_from_directory(
     train_path,
     target_size=(112,112),
-    batch_size=8,
+    batch_size=16,
     color_mode='rgb',
     class_mode='sparse',#展开成一维
     shuffle=True,
@@ -62,14 +62,14 @@ train_generator = train_datagen.flow_from_directory(
 validation_generator = valid_datagen.flow_from_directory(
     valid_path,
     target_size=(112,112),
-    batch_size=8,
+    batch_size=16,
     color_mode='rgb',
     class_mode='sparse')
 
 test_generator = test_datagen.flow_from_directory(
     test_path,
     target_size=(112,112),
-    batch_size=8,
+    batch_size=16,
     color_mode='rgb',
     class_mode='sparse')
 
@@ -93,7 +93,7 @@ backend.clear_session()
 #https://zhuanlan.zhihu.com/p/491848581
 #https://arxiv.org/pdf/2010.11929.pdf
 
-vit_model = vit.vit_l32(
+vit_model = vit.vit_l16(
     image_size=112,
     pretrained=True,#使用预训练的模型
     include_top=False,
@@ -175,5 +175,4 @@ print("best val_loss:", np.min(val_loss_values), "epoch:", np.argmin(val_loss_va
 #保存模型
 test_loss, test_acc = model.evaluate(test_generator)
 print("Test Accuracy:", test_acc)
-model.save('ViT.h5')
-model.save('./model')
+model.save('vit_l16.h5')
