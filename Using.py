@@ -32,7 +32,7 @@ def image_process(image_path):
     return image
 
 data=Load_csv("./birds latin names.csv")
-image_path="./148.jpg"
+image_path="./001.jpg"
 image=image_process(image_path)
 print(image)
 interpreter = tf.lite.Interpreter("./vit_l16.tflite")
