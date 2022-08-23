@@ -53,7 +53,7 @@ test_datagen = ImageDataGenerator(rescale=1 / 255)
 #读入数据
 train_generator = train_datagen.flow_from_directory(
     train_path,
-    target_size=(224, 224),
+    target_size=(112,112),
     batch_size=8,
     color_mode='rgb',
     class_mode='sparse',#展开成一维
@@ -61,14 +61,14 @@ train_generator = train_datagen.flow_from_directory(
 )
 validation_generator = valid_datagen.flow_from_directory(
     valid_path,
-    target_size=(224, 224),
+    target_size=(112,112),
     batch_size=8,
     color_mode='rgb',
     class_mode='sparse')
 
 test_generator = test_datagen.flow_from_directory(
     test_path,
-    target_size=(224, 224),
+    target_size=(112,112),
     batch_size=8,
     color_mode='rgb',
     class_mode='sparse')
@@ -94,7 +94,7 @@ backend.clear_session()
 #https://arxiv.org/pdf/2010.11929.pdf
 
 vit_model = vit.vit_l32(
-    image_size=224,
+    image_size=112,
     pretrained=True,#使用预训练的模型
     include_top=False,
     pretrained_top=False#如果不如此指定会出现错误
@@ -120,7 +120,7 @@ for layer in vit_model.layers[:finetune_at - 1]:
 
 num_classes = len(validation_generator.class_indices)
 
-noise = GaussianNoise(0.01, input_shape=(224, 224, 3))
+noise = GaussianNoise(0.01, input_shape=(112,112,3))
 #在ViT网络的最前端插入一个线性层并输出softmax
 head = Dense(num_classes, activation="softmax")
 
