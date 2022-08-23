@@ -57,9 +57,8 @@ train_generator = train_datagen.flow_from_directory(
     batch_size=8,
     color_mode='rgb',
     class_mode='sparse',#展开成一维
-    shuffle=False,
+    shuffle=True,
 )
-
 validation_generator = valid_datagen.flow_from_directory(
     valid_path,
     target_size=(224, 224),
@@ -137,7 +136,7 @@ model.compile(optimizer=optimizers.Adam(),
 
 history = model.fit(
     train_generator,
-    epochs=2,#default
+    epochs=6,#default
     validation_data=validation_generator,
     verbose=1,
     shuffle=True,
