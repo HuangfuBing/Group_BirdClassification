@@ -31,7 +31,7 @@ def image_process(image_path):
     image = image.eval(session=sess)  # 转化为numpy数组
     return image
 
-data=Load_csv("D:/WorkSpace/PycharmProjects/CanCanNeedBird/Dataset/birds latin names.csv")
+data=Load_csv("./birds latin names.csv")
 image_path="./148.jpg"
 image=image_process(image_path)
 print(image)
