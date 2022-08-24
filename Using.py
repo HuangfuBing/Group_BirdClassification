@@ -31,20 +31,16 @@ def image_process(image_path):
     image = image.eval(session=sess)  # 转化为numpy数组
     return image
 
-data=Load_csv("./birds latin names.csv")
-image_path="./001.jpg"
+data=Load_csv("D:/WorkSpace/PycharmProjects/CanCanNeedBird/Dataset/birds latin names.csv")
+image_path="./test.jpg"
 image=image_process(image_path)
-print(image)
 interpreter = tf.lite.Interpreter("./vit_l16.tflite")
 interpreter.allocate_tensors()
 input_details = interpreter.get_input_details()
 output_details = interpreter.get_output_details()
-print(input_details)
-print(output_details)
 interpreter.set_tensor(input_details[0]['index'], image)#传入的数据必须为ndarray类型
 interpreter.invoke()
 output_data = interpreter.get_tensor(output_details[0]['index'])
-print(output_data)
 w = np.argmax(output_data)#值最大的位置
 print("鸟类俗名：",data[w+1][1]," ","鸟类学名:",data[w+1][2])#第100
 
