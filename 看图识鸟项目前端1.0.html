@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器学习识别鸟类</title>
+    <link rel="icon" type="image/x-icon" href="https://www.bilibili.com/favicon.ico">
+    <style type="text/css">
+    h1.title
+    {
+        height: 150px;
+        background-image: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.doubanio.com%2Fview%2Fthing_review%2Fl%2Fpublic%2Fp6429223.jpg&refer=http%3A%2F%2Fimg2.doubanio.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663897903&t=98ace85bf53045fd6187410d1a446c8a) ;
+        color:coral;
+        text-align: center;
+        padding-top: 50px;
+        font-size: 50px;
+        font-family:sans-serif;
+        transition-duration: 1s;
+        margin-top: 4px;
+    }
+
+    h1.title:hover
+    {
+        font-size: 70px;
+        transition-duration: 1s;
+    }
+
+   img#pic1,img#pic2,img#pic3,img#pic4
+   {
+    transition-duration: 1s;
+    position:relative;
+   }
+
+   img#pic1:hover
+   {
+    transition-duration: 1s;
+    transform: translateX(200px);
+   }
+
+   img#pic2:hover
+   {
+    transition-duration: 1s;
+    transform: translateX(-200px);
+   }
+
+   img#pic3:hover
+   {
+    transition-duration: 1s;
+    transform: translateX(200px);
+   }
+
+   img#pic4:hover
+   {
+    transition-duration: 1s;
+    transform: translateX(-200px);
+   }
+
+   body
+   {
+    background-color:cornsilk;
+   }
+
+   h2
+   {
+    display: inline-block;
+    position: relative;
+    left:120px;
+    color:chocolate;
+    font-size: 25px;
+    padding:5px;
+    border-style: solid;
+    border-width: 7px;
+    border-color:bisque;
+   }
+
+   li.list
+   {
+    position: relative;
+    left:110px;
+    color:darkgoldenrod;
+    font-size: 20px;
+   }
+
+   h1.subtitle
+   {
+    display: inline-block;
+    position: relative;
+    left:120px;
+    color:chocolate;
+    font-size: 25px;
+    padding:5px;
+    border-style: solid;
+    border-width: 7px;
+    border-color:bisque;
+   }
+
+   h1.subtitle2
+   {
+    display: inline-block;
+    position: relative;
+    left:120px;
+    color:chocolate;
+    font-size: 20px;
+    padding:5px;
+    border-style: solid;
+    border-width: 7px;
+    border-color:bisque;
+   }
+
+   p.article
+   {
+    position: relative;
+    left:110px;
+    color:darkgoldenrod;
+    font-size: 18px;
+    width:1400px;
+   }
+
+   a.a
+   {
+    position: relative;
+    left:110px;
+    color:darkgoldenrod;
+    font-size: 18px;
+    width:1400px;
+   }
+
+   a.a:hover
+   {
+    color:cornflowerblue;
+   }
+
+   div.gap
+   {
+    width: 38%;
+    height: 5px;
+    background-color: darkkhaki;
+    float: left;
+    border-radius: 15px;
+   }
+
+   span.strong
+   {
+    transition-duration: 1s;
+   }
+
+   span.strong:hover
+   {
+    font-size: 40px;
+    transition-duration: 1s;
+   }
+
+   form
+   {
+    display: inline-block;
+    position: relative;
+    left:410px;
+    border-style: solid;
+    border-width: 7px ;
+    border-color: bisque;
+    padding: 10px;
+    border-radius: 5px;
+   }
+
+   label.lab
+   {
+    color:darkgoldenrod;
+    font-size: 18px;
+    font-style: italic;
+   }
+
+   span.form
+   {
+    color:darkgoldenrod;
+    font-size: 18px;
+    font-style: italic;
+   }
+
+   input.sub
+   {
+    color:white;
+    font-size: 18px;
+    background-color: darkgoldenrod;
+    padding:2px;
+    border-width: 1px;
+    border-color: darkgoldenrod;
+    border-radius: 5px;
+   }
+
+   input.sub:active
+   {
+       background-color: brown;
+   }
+
+   div.form
+   {
+    display: inline-block;
+   }
+
+   summary.sound
+   {
+    position: relative;
+    left:110px;
+    color:darkgoldenrod;
+    font-size: 18px;
+    width:1400px;
+   }
+
+   img.mirror
+   {
+       height: 92px;
+       width: 92px;
+       position: relative;
+       top:20px;
+       left:400px;
+       border-style: solid;
+       border-width: 7px ;
+       border-color: bisque;
+       padding: 1px;
+       border-radius: 5px;
+   }
+
+    </style>
+</head>
+<body>
+    <h1 class="title">机器学习识别鸟类</h1>
+    <img src="https://ts1.cn.mm.bing.net/th/id/R-C.751b4a926a8e720908baa0ffd81c0e4d?rik=I3v3IL0kdfSEoA&riu=http%3a%2f%2fbpic.588ku.com%2felement_pic%2f00%2f16%2f07%2f275798d0343e002.jpg&ehk=fxdO9J4WDCFAfgEU40X9D%2feEGvqt1BpLQu9GppET5LE%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="搜素" class="mirror">
+    <form action="/receive" method="POST">
+        <label class="lab" for="01">图片路径：</label>
+        <input type="text" name="image_path" size="36" id="01" style="background-color: cornsilk; border-radius: 5px;">
+        <div class="form">&nbsp&nbsp&nbsp&nbsp</div>
+        <input type="submit" value="确认" class="sub"><br/><br/>
+        <span class="form">{{msg}}</span>
+    </form><br><br><br>
+    <img id="pic1" src="https://img0.baidu.com/it/u=3004475173,2531389629&fm=253&fmt=auto&app=138&f=JPEG?w=740&h=500" alt="bird1" width="25%" height="200px" style="margin-bottom:4px; left:180px" >
+    <img id="pic2" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fitbbs%2F1506%2F18%2Fc68%2F8616863_1434631559353.jpg&refer=http%3A%2F%2Fimg.pconline.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1663898164&t=098ae485a2ed764f69ff3cfb02e0fe9b" alt="bird1" width="25%" height="200px" style="float:right;margin-bottom:4px; right:180px"><br>
+    <img id="pic3" src="https://img1.baidu.com/it/u=648458871,207037880&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=322" alt="bird1" width="25%" height="200px" style="float:left; left:180px">
+    <img id="pic4" src="https://img2.baidu.com/it/u=1022026425,1503161604&fm=253&fmt=auto&app=138&f=JPEG?w=755&h=500" alt="bird1" width="25%" height="200px" style="float:right; right:180px">
+
+    <br><br><br><br><br><br><br><br><br><br>
+
+    <br><br><br>
+    <div class="gap"></div>
+    <br><br>
+
+    <details>
+        <summary><h2>初衷与目的</h2></summary>
+        <ul>
+            <li class="list">AI识别鸟类方便用户快速并且准确了解熟悉各种鸟类</li>
+            <li class="list">AI识别鸟类为准确识别种群个体提供了解决方案，方便对动物识别的研究，为维护生态系统平衡做出隐性贡献</li>
+            <li class="list">AI识别鸟类在人文角度能增进人们对鸟类的了解，从而达到提高人们关爱动物的意识的目的</li>
+        </ul>
+    </details>
+
+    <br>
+    <div class="gap"></div>
+    <br><br>
+
+    <details>
+        <summary><h1 class="subtitle">鸟类对人类的<span class="strong">启发</span></h1></summary>
+        <p class="article">&nbsp&nbsp&nbsp&nbsp&nbsp传说，在2000多年前，我国的著名工匠鲁班，曾研究和制造过木鸟。据历史文献记载，1900多年前，我国就有人把鸟羽绑在一起，做成翅膀，能够滑翔百步以外。400多年以前，意大利人达·芬奇根据对鸟类的观察和研究，设计了扑翼机，试图用脚蹬的动来扑动飞行。后来，经过许多科学家的试验，人们才弄清鸟类定翼滑翔的机理，认识到机翼必须像鸟翼那样前缘厚，后缘薄，构成曲面才能产生升力，再加上工业提供了轻质的金属材料和大功率发动机，终于在1903年发明了飞机，实现了几千年来人类渴望飞上天空的理想。</p>
+    </details>
+
+    <br>
+    <div class="gap"></div>
+    <br><br>
+
+    <details>
+        <summary><h1 class="subtitle">鸟类与人类的<span class="strong">关系</span></h1></summary>
+        <p class="article">&nbsp&nbsp&nbsp&nbsp&nbsp鸟的益处很多，一只大山雀1天可捕食害虫200多条；1只喜鹊1年消灭松毛虫15000条；1对杜鹃1天可吃掉柳毒蛾幼虫180条；1只啄木鸟1天消灭蛀干害虫300多条，相当于保住了1000公斤粮食。鸟语同音乐一样作为一种信息，能调节人的神经系统的功能，使人的紧张情绪松弛，从而使人产生轻松感，有些鸟语还有防病健身作用。喜鹊、乌鸦的食物有60％以上也是害虫，有昆虫学家在解剖500只飞鸟后发现，其胃中有昆虫和虫体碎片的占93％之多。假设我们周围没有鸟，那么就会出现害虫猖獗、鼠害蔓延。生态平衡的破坏将导致农业减产、疾病传播，直接影响人类的生产和生活。</p>
+    </details>
+    <br>
+
+    <br>
+    <div class="gap"></div>
+    <br><br>
+
+    <h1 class="subtitle2"><span class="strong">了解更多</span></h1>
+    <details>
+        <summary class="sound">鸟类百科</summary>
+        <p><a href="https://baikequanshuo123.com/69727.html" target="_blank" class="a">鸟类大全（百科全书）</a></p>
+    </details>
+    <br>
+    <details>
+        <summary class="sound">video</summary>
+        <a href="https://www.douyin.com/video/7008103934598319393" target="_blank" class="a">你听过几种鸟叫声</a>
+    </details>
+    <br>
+    <details>
+        <summary class="sound">相关图书</summary>
+        <p><a href="https://item.jd.com/10028056293789.html" target="_blank" class="a"><img src="https://img14.360buyimg.com/n1/jfs/t1/186888/26/2329/272131/6098a37fE2ea01ff7/47a0192c4c01a54e.jpg" alt="鸟百科图书" width="180px" height="180px"></a></p>
+    </details>
+    <br><br>
+
+    <hr>
+    <footer>
+        <p style="font-size:5px; color:hotpink;transform: translateX(100px);">——————中软敢死队&nbspcancanneedbird保密项目&nbsp&nbsp&nbsp保留所有权利</p>
+    </footer>
+</body>
+</html>

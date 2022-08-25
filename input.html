@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鸟儿识别器</title>
+</head>
+<body>
+    <form action="/receive" method="POST">
+        请输入您想要鉴别的鸟类图片路径：<input type="text" name="image_path" size="36">
+        <input type="submit" value="确认"><br/><br/>
+        该鸟儿的种类：{{msg}}
+    </form>
+</body>
+</html>
